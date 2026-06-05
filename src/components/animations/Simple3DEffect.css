@@ -1,0 +1,126 @@
+/* src/components/animations/Simple3DEffect.css */
+.simple-3d-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1000px;
+}
+
+.simple-3d-sphere {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease;
+}
+
+.sphere-layer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 2px solid transparent;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.layer-1 {
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle at 30% 30%, rgba(99, 102, 241, 0.2), transparent 70%);
+  border-color: rgba(99, 102, 241, 0.3);
+  animation-delay: 0s;
+}
+
+.layer-2 {
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle at 70% 70%, rgba(236, 72, 153, 0.2), transparent 70%);
+  border-color: rgba(236, 72, 153, 0.3);
+  animation-delay: 0.5s;
+}
+
+.layer-3 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.2), transparent 70%);
+  border-color: rgba(6, 182, 212, 0.3);
+  animation-delay: 1s;
+}
+
+.sphere-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle at 30% 30%, #fff, var(--primary));
+  border-radius: 50%;
+  box-shadow: 0 0 50px var(--primary);
+  animation: glow 2s ease-in-out infinite;
+}
+
+.sphere-rings {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 350px;
+  height: 350px;
+  transform-style: preserve-3d;
+}
+
+.ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotateX(90deg);
+  width: 100%;
+  height: 100%;
+  border: 2px solid rgba(99, 102, 241, 0.2);
+  border-radius: 50%;
+  animation: rotateRing 10s linear infinite;
+}
+
+.ring:nth-child(2) {
+  transform: translate(-50%, -50%) rotateY(90deg);
+  animation-duration: 15s;
+}
+
+.ring:nth-child(3) {
+  transform: translate(-50%, -50%) rotateX(45deg) rotateY(45deg);
+  animation-duration: 20s;
+  border-color: rgba(236, 72, 153, 0.2);
+}
+
+@keyframes rotateRing {
+  from {
+    transform: translate(-50%, -50%) rotateX(90deg) rotateZ(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotateX(90deg) rotateZ(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 50px var(--primary);
+  }
+  50% {
+    box-shadow: 0 0 80px var(--secondary);
+  }
+}

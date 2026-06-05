@@ -1,23 +1,38 @@
-import logo from './logo.svg';
+// src/App.js (Updated with ScrollToTop component)
+import React, { useEffect } from 'react';
+import { motion, useScroll } from 'framer-motion';
+import { Routes, Route } from 'react-router-dom';
+import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer';
+import ScrollToTop from './components/ScrollToTop';
+import Home from './pages/Home';
+import About from './pages/About';
+import Services from './pages/Services';
+import Courses from './pages/Courses';
+import Contact from './pages/Contact';
 import './App.css';
 
 function App() {
+  const { scrollYProgress } = useScroll();
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <ScrollToTop />
+      <motion.div 
+        className="scroll-progress"
+        style={{ scaleX: scrollYProgress }}
+      />
+      <Navbar />
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/courses" element={<Courses />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </main>
+      <Footer />
     </div>
   );
 }

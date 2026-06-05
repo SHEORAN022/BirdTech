@@ -1,0 +1,55 @@
+/* src/components/common/SectionHeader.css */
+.section-header {
+  margin-bottom: var(--spacing-lg);
+}
+
+.section-header-left {
+  text-align: left;
+}
+
+.section-header-center {
+  text-align: center;
+}
+
+.section-header-right {
+  text-align: right;
+}
+
+.section-badge {
+  display: inline-block;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: var(--radius-full);
+  color: var(--primary-light);
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: var(--spacing-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-primary);
+}
+
+.section-title .gradient-text {
+  display: inline-block;
+}
+
+.section-description {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.section-header-left .section-description {
+  margin-left: 0;
+}
+
+.section-header-right .section-description {
+  margin-right: 0;
+}
